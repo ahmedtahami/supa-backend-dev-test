@@ -16,10 +16,11 @@ namespace QuizAPI.Controllers
             _logger = logger;
             _service = quizService;
         }
-        [HttpGet("QuizReport")]
-        public IActionResult GetReport()
+        [HttpGet("Report")]
+        public async Task<IActionResult> GetReport()
         {
-            return Ok(_service.GetReport());
+            var result = await _service.GetReportAsync();
+            return Ok(result);
         }
         [HttpPost("SubmitAnswer")]
         public async Task<IActionResult> SubmitAnswer(SubmitAnswerDTO submitAnswerDTO)

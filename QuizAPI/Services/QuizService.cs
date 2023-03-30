@@ -11,11 +11,12 @@ namespace QuizAPI.Services
         {
             _dbContext = dbContext;
         }
-        public APIResult<List<UserContent>> GetReport()
+        public async Task<APIResult<List<UserContent>>> GetReportAsync()
         {
             try
             {
-                var usersByWins = _dbContext.UserContents.OrderByDescending(u => u.Wins).ToList();
+                //var usersByWins = _dbContext.UserContents.OrderByDescending(u => u.Wins).ToList();
+                var usersByWins = await _dbContext.UserContents.FromSqlRaw("EXEC GetUsersByWins").ToListAsync();
                 return new APIResult<List<UserContent>> { Data = usersByWins, TotalRecords = usersByWins.Count };
             }
             catch (Exception ex)
