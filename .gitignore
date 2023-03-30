@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/QuizAPI/QuizAPI.csproj.user
+/QuizAPI/obj
+/QuizAPI/bin/Debug/net6.0
+/QuizAPI/appsettings.Development.json
+/.vs
